@@ -634,3 +634,158 @@ Processing StatsController#show (for 127.0.0.1 at 2010-01-17 19:15:23) [GET]
   [4;35;1mStat Load (4.9ms)[0m   [0mSELECT * FROM "stats" WHERE ("stats".term_id = 1) ORDER BY day ASC[0m
 Rendering stats/show
 Completed in 37ms (View: 11, DB: 5) | 200 OK [http://localhost/stats/show/1]
+
+
+Processing StatsController#show (for 127.0.0.1 at 2010-01-17 19:26:24) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mTerm Load (0.3ms)[0m   [0;1mSELECT * FROM "terms" WHERE ("terms"."id" = 1) [0m
+  [4;35;1mStat Load (5.4ms)[0m   [0mSELECT * FROM "stats" WHERE ("stats".term_id = 1) ORDER BY day ASC[0m
+Rendering stats/show
+Completed in 36ms (View: 13, DB: 6) | 200 OK [http://localhost/stats/show/1]
+
+
+Processing TermsController#index (for 127.0.0.1 at 2010-01-17 19:29:03) [GET]
+  [4;36;1mTerm Load (0.9ms)[0m   [0;1mSELECT * FROM "terms" [0m
+Rendering terms/index
+
+ActionView::TemplateError (undefined method `title' for #<ActionView::Base:0x1015cea70>) on line #1 of app/views/terms/index.html.erb:
+1: <% title "Terms" %>
+2: 
+3: <table>
+4:   <tr>
+
+    app/views/terms/index.html.erb:1
+
+Rendered rescues/_trace (50.2ms)
+Rendered rescues/_request_and_response (1.4ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-01-17 19:29:05) [GET]
+
+ActionController::RoutingError (No route matches "/term" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing TermsController#index (for 127.0.0.1 at 2010-01-17 19:29:07) [GET]
+  [4;35;1mTerm Load (0.5ms)[0m   [0mSELECT * FROM "terms" [0m
+Rendering terms/index
+
+ActionView::TemplateError (undefined method `title' for #<ActionView::Base:0x104273760>) on line #1 of app/views/terms/index.html.erb:
+1: <% title "Terms" %>
+2: 
+3: <table>
+4:   <tr>
+
+    app/views/terms/index.html.erb:1
+
+Rendered rescues/_trace (127.6ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing TermsController#index (for 127.0.0.1 at 2010-01-17 19:30:07) [GET]
+  [4;36;1mTerm Load (0.5ms)[0m   [0;1mSELECT * FROM "terms" [0m
+Rendering terms/index
+
+ActionView::TemplateError (undefined method `title' for #<ActionView::Base:0x1043e4568>) on line #1 of app/views/terms/index.html.erb:
+1: <% title "Terms" %>
+2: 
+3: <table>
+4:   <tr>
+
+    app/views/terms/index.html.erb:1
+
+Rendered rescues/_trace (46.2ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing TermsController#index (for 127.0.0.1 at 2010-01-17 19:30:19) [GET]
+  [4;36;1mTerm Load (0.9ms)[0m   [0;1mSELECT * FROM "terms" [0m
+Rendering terms/index
+
+ActionView::TemplateError (undefined method `title' for #<ActionView::Base:0x1011f5bd8>) on line #1 of app/views/terms/index.html.erb:
+1: <% title "Terms" %>
+2: 
+3: <table>
+4:   <tr>
+
+    app/views/terms/index.html.erb:1
+
+Rendered rescues/_trace (49.3ms)
+Rendered rescues/_request_and_response (1.5ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing TermsController#index (for 127.0.0.1 at 2010-01-17 19:32:35) [GET]
+  [4;35;1mTerm Load (0.5ms)[0m   [0mSELECT * FROM "terms" [0m
+Rendering template within layouts/application
+Rendering terms/index
+Completed in 108ms (View: 102, DB: 1) | 200 OK [http://localhost/terms]
+
+
+Processing TermsController#show (for 127.0.0.1 at 2010-01-17 19:32:37) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mTerm Load (0.2ms)[0m   [0;1mSELECT * FROM "terms" WHERE ("terms"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering terms/show
+Completed in 87ms (View: 10, DB: 0) | 200 OK [http://localhost/terms/1]
+
+
+Processing TermsController#show (for 127.0.0.1 at 2010-01-17 19:33:46) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mTerm Load (0.2ms)[0m   [0mSELECT * FROM "terms" WHERE ("terms"."id" = 1) [0m
+  [4;36;1mStat Load (4.9ms)[0m   [0;1mSELECT * FROM "stats" WHERE ("stats".term_id = 1) ORDER BY day ASC[0m
+Rendering template within layouts/application
+Rendering terms/show
+Completed in 58ms (View: 13, DB: 5) | 200 OK [http://localhost/terms/1]
+
+
+Processing TermsController#index (for 127.0.0.1 at 2010-01-17 19:33:48) [GET]
+  [4;35;1mTerm Load (0.5ms)[0m   [0mSELECT * FROM "terms" [0m
+Rendering template within layouts/application
+Rendering terms/index
+Completed in 12ms (View: 7, DB: 1) | 200 OK [http://localhost/terms]
+
+
+Processing TermsController#new (for 127.0.0.1 at 2010-01-17 19:33:50) [GET]
+Rendering template within layouts/application
+Rendering terms/new
+Rendered terms/_form (3.8ms)
+Completed in 20ms (View: 15, DB: 0) | 200 OK [http://localhost/terms/new]
+
+
+Processing TermsController#create (for 127.0.0.1 at 2010-01-17 19:33:54) [POST]
+  Parameters: {"commit"=>"Submit", "term"=>{"name"=>"vaccin"}, "authenticity_token"=>"X4Xy2JHK63Efav4iqkcKYiK5kWBT+6tr4x9FwdL8e+4="}
+  [4;36;1mTerm Load (0.1ms)[0m   [0;1mSELECT "terms".id FROM "terms" WHERE ("terms"."name" = 'vaccin') LIMIT 1[0m
+  [4;35;1mTerm Create (0.5ms)[0m   [0mINSERT INTO "terms" ("name", "created_at", "updated_at") VALUES('vaccin', '2010-01-17 18:33:54', '2010-01-17 18:33:54')[0m
+Redirected to http://localhost:3000/terms/2
+Completed in 13ms (DB: 1) | 302 Found [http://localhost/terms]
+
+
+Processing TermsController#show (for 127.0.0.1 at 2010-01-17 19:33:54) [GET]
+  Parameters: {"id"=>"2"}
+  [4;36;1mTerm Load (0.2ms)[0m   [0;1mSELECT * FROM "terms" WHERE ("terms"."id" = 2) [0m
+  [4;35;1mStat Load (0.3ms)[0m   [0mSELECT * FROM "stats" WHERE ("stats".term_id = 2) ORDER BY day ASC[0m
+Rendering template within layouts/application
+Rendering terms/show
+Completed in 15ms (View: 5, DB: 0) | 200 OK [http://localhost/terms/2]
+
+
+Processing TermsController#index (for 127.0.0.1 at 2010-01-17 19:33:56) [GET]
+  [4;36;1mTerm Load (0.6ms)[0m   [0;1mSELECT * FROM "terms" [0m
+Rendering template within layouts/application
+Rendering terms/index
+Completed in 15ms (View: 10, DB: 1) | 200 OK [http://localhost/terms]
+
+
+Processing TermsController#show (for 127.0.0.1 at 2010-01-17 19:33:58) [GET]
+  Parameters: {"id"=>"2"}
+  [4;35;1mTerm Load (0.2ms)[0m   [0mSELECT * FROM "terms" WHERE ("terms"."id" = 2) [0m
+  [4;36;1mStat Load (0.3ms)[0m   [0;1mSELECT * FROM "stats" WHERE ("stats".term_id = 2) ORDER BY day ASC[0m
+Rendering template within layouts/application
+Rendering terms/show
+Completed in 16ms (View: 6, DB: 0) | 200 OK [http://localhost/terms/2]

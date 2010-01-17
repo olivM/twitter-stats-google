@@ -1,0 +1,17 @@
+<% title "Terms" %>
+
+<table>
+  <tr>
+    <th>Name</th>
+  </tr>
+  <% for term in @terms %>
+    <tr>
+      <td><%=h term.name %></td>
+      <td><%= link_to "Show", term %></td>
+      <td><%= link_to "Edit", edit_term_path(term) %></td>
+      <td><%= link_to "Destroy", term, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Term", new_term_path %></p>

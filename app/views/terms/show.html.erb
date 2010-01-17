@@ -1,0 +1,18 @@
+<% title "Term" %>
+
+<p>
+  <strong>Name:</strong>
+  <%=h @term.name %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_term_path(@term) %> |
+  <%= link_to "Destroy", @term, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", terms_path %>
+</p>
+
+<ul>
+	<%@stats.each do |stat|%>
+		<li><%=stat.day%> - <%=stat.nb_occ%></li>
+	<%end%>
+</ul>
