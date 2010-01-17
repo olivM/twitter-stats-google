@@ -1,0 +1,6 @@
+<h1><%@term.name%></h1>
+<ul>
+	<%@stats.each do |stat|%>
+		<li><%=stat.day%> - <%=stat.nb_occ%></li>
+	<%end%>
+</ul>

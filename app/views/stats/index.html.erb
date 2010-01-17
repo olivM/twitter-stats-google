@@ -1,0 +1,5 @@
+<ul>
+	<%@terms.each do |term|%>
+			<li><a href="/stats/show/<%=term.id%>"><%=term.name%></a></li>
+	<%end%>
+</ul>

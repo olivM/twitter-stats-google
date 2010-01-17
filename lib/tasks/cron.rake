@@ -1,4 +1,4 @@
-task :get_stats => :environment do
+task :cron => :environment do
   
   term = Term.find(:first, :order => " RANDOM() ")
 

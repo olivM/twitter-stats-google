@@ -476,3 +476,161 @@ Migrating to CreateStats (20100117170939)
   [4;36;1mStat Create (0.3ms)[0m   [0;1mINSERT INTO "stats" ("created_at", "term_id", "updated_at", "nb_occ", "day") VALUES('2010-01-17 17:51:15', 1, '2010-01-17 17:51:15', NULL, '2009-05-30')[0m
   [4;35;1mStat Load (0.2ms)[0m   [0mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-05-30' AND "stats".term_id = 1 AND "stats".id <> 60) LIMIT 1[0m
   [4;36;1mStat Update (0.3ms)[0m   [0;1mUPDATE "stats" SET "updated_at" = '2010-01-17 17:51:16', "nb_occ" = 1 WHERE "id" = 60[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-01-17 19:01:02) [GET]
+
+ActionController::RoutingError (No route matches "/" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-01-17 19:11:22) [GET]
+
+ActionController::RoutingError (No route matches "/stats" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing StatsController#index (for 127.0.0.1 at 2010-01-17 19:11:31) [GET]
+  [4;36;1mTerm Load (0.9ms)[0m   [0;1mSELECT * FROM "terms" [0m
+Rendering stats/index
+ERROR: compiling _run_erb_app47views47stats47index46html46erb RAISED compile error
+/Users/oliv/Workspace/twitter_tools/google_stats/app/views/stats/index.html.erb:3: unknown regexp option - l
+/Users/oliv/Workspace/twitter_tools/google_stats/app/views/stats/index.html.erb:3: syntax error, unexpected $undefined
+...tput_buffer.concat "</a></li>\n\t"
+                              ^
+/Users/oliv/Workspace/twitter_tools/google_stats/app/views/stats/index.html.erb:4: syntax error, unexpected $undefined, expecting ')'
+; end; @output_buffer.concat "\n</ul>"
+                               ^
+/Users/oliv/Workspace/twitter_tools/google_stats/app/views/stats/index.html.erb:4: unterminated string meets end of file
+/Users/oliv/Workspace/twitter_tools/google_stats/app/views/stats/index.html.erb:4: syntax error, unexpected tSTRING_END, expecting tSTRING_CONTENT or tREGEXP_END or tSTRING_DBEG or tSTRING_DVAR
+Function body:           def _run_erb_app47views47stats47index46html46erb(local_assigns)
+            old_output_buffer = output_buffer;;@output_buffer = '';  __in_erb_template=true ; @output_buffer.concat "<ul>\n\t"
+; @terms.each do |term|; @output_buffer.concat "\n\t\t\t<li><a href=\"/stats/show/"
+; @output_buffer.concat((term.id"><%=term.name).to_s); @output_buffer.concat "</a></li>\n\t"
+; end; @output_buffer.concat "\n</ul>"
+; @output_buffer
+          ensure
+            self.output_buffer = old_output_buffer
+          end
+Backtrace: /Users/oliv/Workspace/twitter_tools/google_stats/app/views/stats/index.html.erb:4:in `compile!'
+/opt/local/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/renderable.rb:61:in `compile'
+/opt/local/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/renderable.rb:28:in `render'
+/opt/local/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/template.rb:205:in `render_template'
+/opt/local/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/base.rb:265:in `render'
+/opt/local/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/base.rb:1250:in `render_for_file'
+/opt/local/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/base.rb:945:in `render_without_benchmark'
+/opt/local/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/benchmarking.rb:51:in `render'
+/opt/local/lib/ruby/gems/1.8/gems/activesupport-2.3.5/lib/active_support/core_ext/benchmark.rb:17:in `ms'
+/opt/local/lib/ruby/1.8/benchmark.rb:308:in `realtime'
+/opt/local/lib/ruby/gems/1.8/gems/activesupport-2.3.5/lib/active_support/core_ext/benchmark.rb:17:in `ms'
+/opt/local/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/benchmarking.rb:51:in `render'
+/opt/local/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/base.rb:1326:in `default_render'
+/opt/local/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/base.rb:1332:in `perform_action_without_filters'
+/opt/local/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/filters.rb:617:in `call_filters'
+/opt/local/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/filters.rb:610:in `perform_action_without_benchmark'
+/opt/local/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+/opt/local/lib/ruby/gems/1.8/gems/activesupport-2.3.5/lib/active_support/core_ext/benchmark.rb:17:in `ms'
+/opt/local/lib/ruby/1.8/benchmark.rb:308:in `realtime'
+/opt/local/lib/ruby/gems/1.8/gems/activesupport-2.3.5/lib/active_support/core_ext/benchmark.rb:17:in `ms'
+/opt/local/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+/opt/local/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/rescue.rb:160:in `perform_action_without_flash'
+/opt/local/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/flash.rb:146:in `perform_action'
+/opt/local/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/base.rb:532:in `send'
+/opt/local/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/base.rb:532:in `process_without_filters'
+/opt/local/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/filters.rb:606:in `process'
+/opt/local/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/base.rb:391:in `process'
+/opt/local/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/base.rb:386:in `call'
+/opt/local/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/routing/route_set.rb:437:in `call'
+/opt/local/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/dispatcher.rb:87:in `dispatch'
+/opt/local/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/dispatcher.rb:121:in `_call'
+/opt/local/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/dispatcher.rb:130:in `build_middleware_stack'
+/opt/local/lib/ruby/gems/1.8/gems/activerecord-2.3.5/lib/active_record/query_cache.rb:29:in `call'
+/opt/local/lib/ruby/gems/1.8/gems/activerecord-2.3.5/lib/active_record/query_cache.rb:29:in `call'
+/opt/local/lib/ruby/gems/1.8/gems/activerecord-2.3.5/lib/active_record/connection_adapters/abstract/query_cache.rb:34:in `cache'
+/opt/local/lib/ruby/gems/1.8/gems/activerecord-2.3.5/lib/active_record/query_cache.rb:9:in `cache'
+/opt/local/lib/ruby/gems/1.8/gems/activerecord-2.3.5/lib/active_record/query_cache.rb:28:in `call'
+/opt/local/lib/ruby/gems/1.8/gems/activerecord-2.3.5/lib/active_record/connection_adapters/abstract/connection_pool.rb:361:in `call'
+/opt/local/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/string_coercion.rb:25:in `call'
+/opt/local/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/head.rb:9:in `call'
+/opt/local/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/methodoverride.rb:24:in `call'
+/opt/local/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/params_parser.rb:15:in `call'
+/opt/local/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/session/cookie_store.rb:93:in `call'
+/opt/local/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/failsafe.rb:26:in `call'
+/opt/local/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/lock.rb:11:in `call'
+/opt/local/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/lock.rb:11:in `synchronize'
+/opt/local/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/lock.rb:11:in `call'
+/opt/local/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/dispatcher.rb:114:in `call'
+/opt/local/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/reloader.rb:34:in `run'
+/opt/local/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/dispatcher.rb:108:in `call'
+/opt/local/lib/ruby/gems/1.8/gems/rails-2.3.5/lib/rails/rack/static.rb:31:in `call'
+/opt/local/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/urlmap.rb:46:in `call'
+/opt/local/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/urlmap.rb:40:in `each'
+/opt/local/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/urlmap.rb:40:in `call'
+/opt/local/lib/ruby/gems/1.8/gems/rails-2.3.5/lib/rails/rack/log_tailer.rb:17:in `call'
+/opt/local/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/content_length.rb:13:in `call'
+/opt/local/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/chunked.rb:15:in `call'
+/opt/local/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/handler/mongrel.rb:64:in `process'
+/opt/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:159:in `process_client'
+/opt/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:158:in `each'
+/opt/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:158:in `process_client'
+/opt/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `run'
+/opt/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `initialize'
+/opt/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `new'
+/opt/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `run'
+/opt/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `initialize'
+/opt/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `new'
+/opt/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `run'
+/opt/local/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/handler/mongrel.rb:34:in `run'
+/opt/local/lib/ruby/gems/1.8/gems/rails-2.3.5/lib/commands/server.rb:111
+/opt/local/lib/ruby/vendor_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+/opt/local/lib/ruby/vendor_ruby/1.8/rubygems/custom_require.rb:31:in `require'
+./script/server:3
+
+ActionView::TemplateError (compile error
+/Users/oliv/Workspace/twitter_tools/google_stats/app/views/stats/index.html.erb:3: unknown regexp option - l
+/Users/oliv/Workspace/twitter_tools/google_stats/app/views/stats/index.html.erb:3: syntax error, unexpected $undefined
+...tput_buffer.concat "</a></li>\n\t"
+                              ^
+/Users/oliv/Workspace/twitter_tools/google_stats/app/views/stats/index.html.erb:4: syntax error, unexpected $undefined, expecting ')'
+; end; @output_buffer.concat "\n</ul>"
+                               ^
+/Users/oliv/Workspace/twitter_tools/google_stats/app/views/stats/index.html.erb:4: unterminated string meets end of file
+/Users/oliv/Workspace/twitter_tools/google_stats/app/views/stats/index.html.erb:4: syntax error, unexpected tSTRING_END, expecting tSTRING_CONTENT or tREGEXP_END or tSTRING_DBEG or tSTRING_DVAR) on line #3 of app/views/stats/index.html.erb:
+1: <ul>
+2: 	<%@terms.each do |term|%>
+3: 			<li><a href="/stats/show/<%=term.id"><%=term.name%></a></li>
+4: 	<%end%>
+5: </ul>
+
+    app/views/stats/index.html.erb:4:in `compile!'
+
+Rendered rescues/_trace (112.8ms)
+Rendered rescues/_request_and_response (1.5ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing StatsController#index (for 127.0.0.1 at 2010-01-17 19:11:44) [GET]
+  [4;35;1mTerm Load (0.6ms)[0m   [0mSELECT * FROM "terms" [0m
+Rendering stats/index
+Completed in 13ms (View: 7, DB: 1) | 200 OK [http://localhost/stats]
+
+
+Processing StatsController#show (for 127.0.0.1 at 2010-01-17 19:11:46) [GET]
+  Parameters: {"id"=>"1"}
+
+ActionController::UnknownAction (No action responded to show. Actions: index):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing StatsController#show (for 127.0.0.1 at 2010-01-17 19:15:23) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mTerm Load (0.2ms)[0m   [0;1mSELECT * FROM "terms" WHERE ("terms"."id" = 1) [0m
+  [4;35;1mStat Load (4.9ms)[0m   [0mSELECT * FROM "stats" WHERE ("stats".term_id = 1) ORDER BY day ASC[0m
+Rendering stats/show
+Completed in 37ms (View: 11, DB: 5) | 200 OK [http://localhost/stats/show/1]
