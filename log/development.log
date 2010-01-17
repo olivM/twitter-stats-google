@@ -1,0 +1,478 @@
+  [4;36;1mSQL (1.5ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (2.3ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (2.2ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateTerms (20100117170933)
+  [4;36;1mSQL (0.6ms)[0m   [0;1mCREATE TABLE "terms" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100117170933')[0m
+Migrating to CreateStats (20100117170939)
+  [4;36;1mSQL (0.5ms)[0m   [0;1mCREATE TABLE "stats" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "term_id" integer, "day" varchar(255), "nb_occ" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100117170939')[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("stats")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("terms")[0m
+  [4;36;1mTerm Load (0.1ms)[0m   [0;1mSELECT * FROM "terms" WHERE ("terms"."name" = 'h1n1') LIMIT 1[0m
+  [4;35;1mTerm Load (0.2ms)[0m   [0mSELECT "terms".id FROM "terms" WHERE ("terms"."name" = 'h1n1') LIMIT 1[0m
+  [4;36;1mTerm Create (0.4ms)[0m   [0;1mINSERT INTO "terms" ("name", "created_at", "updated_at") VALUES('h1n1', '2010-01-17 17:25:15', '2010-01-17 17:25:15')[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mStat Load (0.3ms)[0m   [0mSELECT * FROM "stats" [0m
+  [4;36;1mTerm Load (0.4ms)[0m   [0;1mSELECT * FROM "terms" [0m
+  [4;35;1mTerm Load (0.4ms)[0m   [0mSELECT * FROM "terms" [0m
+  [4;35;1mTerm Load (0.4ms)[0m   [0mSELECT * FROM "terms" WHERE ("terms"."name" = 'h1n1') LIMIT 1[0m
+  [4;36;1mStat Load (0.2ms)[0m   [0;1mSELECT * FROM "stats" WHERE ("stats"."day" = '2010-01-01') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;35;1mStat Load (0.2ms)[0m   [0mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2010-01-01' AND "stats".term_id = 1) LIMIT 1[0m
+  [4;36;1mStat Create (0.7ms)[0m   [0;1mINSERT INTO "stats" ("created_at", "term_id", "updated_at", "nb_occ", "day") VALUES('2010-01-17 17:29:06', 1, '2010-01-17 17:29:06', NULL, '2010-01-01')[0m
+  [4;35;1mTerm Load (0.4ms)[0m   [0mSELECT * FROM "terms" WHERE ("terms"."name" = 'h1n1') LIMIT 1[0m
+  [4;36;1mStat Load (0.4ms)[0m   [0;1mSELECT * FROM "stats" WHERE ("stats"."day" = '2010-01-01') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;35;1mTerm Load (0.2ms)[0m   [0mSELECT * FROM "terms" WHERE ("terms"."name" = 'h1n1') LIMIT 1[0m
+  [4;36;1mStat Load (0.3ms)[0m   [0;1mSELECT * FROM "stats" WHERE ("stats"."day" = '2010-01-01') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;35;1mTerm Load (0.2ms)[0m   [0mSELECT * FROM "terms" WHERE ("terms"."name" = 'h1n1') LIMIT 1[0m
+  [4;36;1mStat Load (0.3ms)[0m   [0;1mSELECT * FROM "stats" WHERE ("stats"."day" = '2010-01-01') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;36;1mTerm Load (0.8ms)[0m   [0;1mSELECT * FROM "terms" LIMIT 1[0m
+  [4;35;1mStat Load (0.9ms)[0m   [0mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-04-01') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;36;1mStat Load (0.2ms)[0m   [0;1mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-04-01' AND "stats".term_id = 1) LIMIT 1[0m
+  [4;35;1mStat Create (0.4ms)[0m   [0mINSERT INTO "stats" ("created_at", "term_id", "updated_at", "nb_occ", "day") VALUES('2010-01-17 17:42:56', 1, '2010-01-17 17:42:56', NULL, '2009-04-01')[0m
+  [4;36;1mTerm Load (0.8ms)[0m   [0;1mSELECT * FROM "terms" LIMIT 1[0m
+  [4;35;1mStat Load (0.3ms)[0m   [0mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-04-01') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.3ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (2.3ms)[0m   [0;1mCREATE TABLE "stats" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "term_id" integer, "day" varchar(255), "nb_occ" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.3ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (1.6ms)[0m   [0;1mCREATE TABLE "terms" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (2.1ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (2.9ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT version FROM "schema_migrations"[0m
+  [4;36;1mSQL (1.9ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100117170939')[0m
+  [4;35;1mSQL (2.1ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100117170933')[0m
+  [4;36;1mTerm Load (0.6ms)[0m   [0;1mSELECT * FROM "terms" LIMIT 1[0m
+  [4;36;1mTerm Load (0.0ms)[0m   [0;1mSQLite3::SQLException: no such table: terms: SELECT * FROM "terms" LIMIT 1[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (2.0ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (2.0ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateTerms (20100117170933)
+  [4;36;1mSQL (0.5ms)[0m   [0;1mCREATE TABLE "terms" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100117170933')[0m
+Migrating to CreateStats (20100117170939)
+  [4;36;1mSQL (0.5ms)[0m   [0;1mCREATE TABLE "stats" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "term_id" integer, "day" varchar(255), "nb_occ" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100117170939')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("stats")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("terms")[0m
+  [4;36;1mTerm Load (0.6ms)[0m   [0;1mSELECT * FROM "terms" LIMIT 1[0m
+  [4;36;1mTerm Load (0.2ms)[0m   [0;1mSELECT "terms".id FROM "terms" WHERE ("terms"."name" = 'h1n1') LIMIT 1[0m
+  [4;35;1mTerm Create (0.5ms)[0m   [0mINSERT INTO "terms" ("name", "created_at", "updated_at") VALUES('h1n1', '2010-01-17 17:47:42', '2010-01-17 17:47:42')[0m
+  [4;36;1mTerm Load (0.9ms)[0m   [0;1mSELECT * FROM "terms" ORDER BY RANDOM() LIMIT 1[0m
+  [4;35;1mStat Load (0.2ms)[0m   [0mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-04-01') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;36;1mStat Load (0.1ms)[0m   [0;1mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-04-01' AND "stats".term_id = 1) LIMIT 1[0m
+  [4;35;1mStat Create (0.4ms)[0m   [0mINSERT INTO "stats" ("created_at", "term_id", "updated_at", "nb_occ", "day") VALUES('2010-01-17 17:47:54', 1, '2010-01-17 17:47:54', NULL, '2009-04-01')[0m
+  [4;36;1mTerm Load (0.9ms)[0m   [0;1mSELECT * FROM "terms" ORDER BY RANDOM() LIMIT 1[0m
+  [4;35;1mStat Load (0.3ms)[0m   [0mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-04-01') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;36;1mStat Load (0.2ms)[0m   [0;1mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-04-01' AND "stats".term_id = 1 AND "stats".id <> 1) LIMIT 1[0m
+  [4;35;1mStat Update (0.4ms)[0m   [0mUPDATE "stats" SET "updated_at" = '2010-01-17 17:48:24', "nb_occ" = 3 WHERE "id" = 1[0m
+  [4;36;1mStat Load (0.4ms)[0m   [0;1mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-04-02') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;35;1mStat Load (0.2ms)[0m   [0mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-04-02' AND "stats".term_id = 1) LIMIT 1[0m
+  [4;36;1mStat Create (0.4ms)[0m   [0;1mINSERT INTO "stats" ("created_at", "term_id", "updated_at", "nb_occ", "day") VALUES('2010-01-17 17:48:24', 1, '2010-01-17 17:48:24', NULL, '2009-04-02')[0m
+  [4;35;1mStat Load (0.2ms)[0m   [0mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-04-02' AND "stats".term_id = 1 AND "stats".id <> 2) LIMIT 1[0m
+  [4;36;1mStat Update (0.3ms)[0m   [0;1mUPDATE "stats" SET "updated_at" = '2010-01-17 17:48:24', "nb_occ" = 4 WHERE "id" = 2[0m
+  [4;35;1mStat Load (0.2ms)[0m   [0mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-04-03') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;36;1mStat Load (0.1ms)[0m   [0;1mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-04-03' AND "stats".term_id = 1) LIMIT 1[0m
+  [4;35;1mStat Create (0.3ms)[0m   [0mINSERT INTO "stats" ("created_at", "term_id", "updated_at", "nb_occ", "day") VALUES('2010-01-17 17:48:24', 1, '2010-01-17 17:48:24', NULL, '2009-04-03')[0m
+  [4;36;1mStat Load (0.2ms)[0m   [0;1mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-04-03' AND "stats".term_id = 1 AND "stats".id <> 3) LIMIT 1[0m
+  [4;35;1mStat Update (0.3ms)[0m   [0mUPDATE "stats" SET "updated_at" = '2010-01-17 17:48:25', "nb_occ" = 5 WHERE "id" = 3[0m
+  [4;36;1mStat Load (0.2ms)[0m   [0;1mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-04-04') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;35;1mStat Load (0.1ms)[0m   [0mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-04-04' AND "stats".term_id = 1) LIMIT 1[0m
+  [4;36;1mStat Create (0.3ms)[0m   [0;1mINSERT INTO "stats" ("created_at", "term_id", "updated_at", "nb_occ", "day") VALUES('2010-01-17 17:48:25', 1, '2010-01-17 17:48:25', NULL, '2009-04-04')[0m
+  [4;35;1mStat Load (0.2ms)[0m   [0mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-04-04' AND "stats".term_id = 1 AND "stats".id <> 4) LIMIT 1[0m
+  [4;36;1mStat Update (0.3ms)[0m   [0;1mUPDATE "stats" SET "updated_at" = '2010-01-17 17:48:25', "nb_occ" = 2 WHERE "id" = 4[0m
+  [4;35;1mStat Load (0.3ms)[0m   [0mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-04-05') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;36;1mStat Load (0.1ms)[0m   [0;1mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-04-05' AND "stats".term_id = 1) LIMIT 1[0m
+  [4;35;1mStat Create (0.3ms)[0m   [0mINSERT INTO "stats" ("created_at", "term_id", "updated_at", "nb_occ", "day") VALUES('2010-01-17 17:48:25', 1, '2010-01-17 17:48:25', NULL, '2009-04-05')[0m
+  [4;36;1mStat Load (0.2ms)[0m   [0;1mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-04-05' AND "stats".term_id = 1 AND "stats".id <> 5) LIMIT 1[0m
+  [4;35;1mStat Update (0.3ms)[0m   [0mUPDATE "stats" SET "updated_at" = '2010-01-17 17:48:25', "nb_occ" = 4 WHERE "id" = 5[0m
+  [4;36;1mStat Load (0.2ms)[0m   [0;1mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-04-06') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;35;1mStat Load (0.1ms)[0m   [0mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-04-06' AND "stats".term_id = 1) LIMIT 1[0m
+  [4;36;1mStat Create (0.3ms)[0m   [0;1mINSERT INTO "stats" ("created_at", "term_id", "updated_at", "nb_occ", "day") VALUES('2010-01-17 17:48:25', 1, '2010-01-17 17:48:25', NULL, '2009-04-06')[0m
+  [4;35;1mStat Load (0.2ms)[0m   [0mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-04-06' AND "stats".term_id = 1 AND "stats".id <> 6) LIMIT 1[0m
+  [4;36;1mStat Update (0.3ms)[0m   [0;1mUPDATE "stats" SET "updated_at" = '2010-01-17 17:48:25', "nb_occ" = 3 WHERE "id" = 6[0m
+  [4;35;1mStat Load (0.2ms)[0m   [0mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-04-07') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;36;1mStat Load (0.1ms)[0m   [0;1mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-04-07' AND "stats".term_id = 1) LIMIT 1[0m
+  [4;35;1mStat Create (0.3ms)[0m   [0mINSERT INTO "stats" ("created_at", "term_id", "updated_at", "nb_occ", "day") VALUES('2010-01-17 17:48:25', 1, '2010-01-17 17:48:25', NULL, '2009-04-07')[0m
+  [4;36;1mStat Load (0.2ms)[0m   [0;1mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-04-07' AND "stats".term_id = 1 AND "stats".id <> 7) LIMIT 1[0m
+  [4;35;1mStat Update (0.3ms)[0m   [0mUPDATE "stats" SET "updated_at" = '2010-01-17 17:48:26', "nb_occ" = 7 WHERE "id" = 7[0m
+  [4;36;1mStat Load (0.2ms)[0m   [0;1mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-04-08') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;35;1mStat Load (0.1ms)[0m   [0mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-04-08' AND "stats".term_id = 1) LIMIT 1[0m
+  [4;36;1mStat Create (0.3ms)[0m   [0;1mINSERT INTO "stats" ("created_at", "term_id", "updated_at", "nb_occ", "day") VALUES('2010-01-17 17:48:26', 1, '2010-01-17 17:48:26', NULL, '2009-04-08')[0m
+  [4;35;1mStat Load (0.2ms)[0m   [0mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-04-08' AND "stats".term_id = 1 AND "stats".id <> 8) LIMIT 1[0m
+  [4;36;1mStat Update (0.3ms)[0m   [0;1mUPDATE "stats" SET "updated_at" = '2010-01-17 17:48:26', "nb_occ" = 1 WHERE "id" = 8[0m
+  [4;35;1mStat Load (0.3ms)[0m   [0mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-04-09') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;36;1mStat Load (0.2ms)[0m   [0;1mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-04-09' AND "stats".term_id = 1) LIMIT 1[0m
+  [4;35;1mStat Create (0.3ms)[0m   [0mINSERT INTO "stats" ("created_at", "term_id", "updated_at", "nb_occ", "day") VALUES('2010-01-17 17:48:26', 1, '2010-01-17 17:48:26', NULL, '2009-04-09')[0m
+  [4;36;1mStat Load (0.2ms)[0m   [0;1mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-04-09' AND "stats".term_id = 1 AND "stats".id <> 9) LIMIT 1[0m
+  [4;35;1mStat Update (0.3ms)[0m   [0mUPDATE "stats" SET "updated_at" = '2010-01-17 17:48:26', "nb_occ" = 2 WHERE "id" = 9[0m
+  [4;36;1mStat Load (0.3ms)[0m   [0;1mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-04-10') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;35;1mStat Load (0.1ms)[0m   [0mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-04-10' AND "stats".term_id = 1) LIMIT 1[0m
+  [4;36;1mStat Create (0.3ms)[0m   [0;1mINSERT INTO "stats" ("created_at", "term_id", "updated_at", "nb_occ", "day") VALUES('2010-01-17 17:48:26', 1, '2010-01-17 17:48:26', NULL, '2009-04-10')[0m
+  [4;35;1mStat Load (0.2ms)[0m   [0mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-04-10' AND "stats".term_id = 1 AND "stats".id <> 10) LIMIT 1[0m
+  [4;36;1mStat Update (0.3ms)[0m   [0;1mUPDATE "stats" SET "updated_at" = '2010-01-17 17:48:27', "nb_occ" = 2 WHERE "id" = 10[0m
+  [4;35;1mStat Load (0.2ms)[0m   [0mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-04-11') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;36;1mStat Load (0.1ms)[0m   [0;1mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-04-11' AND "stats".term_id = 1) LIMIT 1[0m
+  [4;35;1mStat Create (0.3ms)[0m   [0mINSERT INTO "stats" ("created_at", "term_id", "updated_at", "nb_occ", "day") VALUES('2010-01-17 17:48:27', 1, '2010-01-17 17:48:27', NULL, '2009-04-11')[0m
+  [4;36;1mStat Load (0.2ms)[0m   [0;1mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-04-11' AND "stats".term_id = 1 AND "stats".id <> 11) LIMIT 1[0m
+  [4;35;1mStat Update (0.3ms)[0m   [0mUPDATE "stats" SET "updated_at" = '2010-01-17 17:48:27', "nb_occ" = 5 WHERE "id" = 11[0m
+  [4;36;1mStat Load (0.2ms)[0m   [0;1mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-04-12') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;35;1mStat Load (0.1ms)[0m   [0mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-04-12' AND "stats".term_id = 1) LIMIT 1[0m
+  [4;36;1mStat Create (0.3ms)[0m   [0;1mINSERT INTO "stats" ("created_at", "term_id", "updated_at", "nb_occ", "day") VALUES('2010-01-17 17:48:27', 1, '2010-01-17 17:48:27', NULL, '2009-04-12')[0m
+  [4;35;1mStat Load (0.2ms)[0m   [0mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-04-12' AND "stats".term_id = 1 AND "stats".id <> 12) LIMIT 1[0m
+  [4;36;1mStat Update (0.3ms)[0m   [0;1mUPDATE "stats" SET "updated_at" = '2010-01-17 17:48:28', "nb_occ" = 10 WHERE "id" = 12[0m
+  [4;35;1mStat Load (0.2ms)[0m   [0mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-04-13') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;36;1mStat Load (0.1ms)[0m   [0;1mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-04-13' AND "stats".term_id = 1) LIMIT 1[0m
+  [4;35;1mStat Create (0.3ms)[0m   [0mINSERT INTO "stats" ("created_at", "term_id", "updated_at", "nb_occ", "day") VALUES('2010-01-17 17:48:28', 1, '2010-01-17 17:48:28', NULL, '2009-04-13')[0m
+  [4;36;1mStat Load (0.2ms)[0m   [0;1mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-04-13' AND "stats".term_id = 1 AND "stats".id <> 13) LIMIT 1[0m
+  [4;35;1mStat Update (0.3ms)[0m   [0mUPDATE "stats" SET "updated_at" = '2010-01-17 17:48:28', "nb_occ" = 7 WHERE "id" = 13[0m
+  [4;36;1mStat Load (0.3ms)[0m   [0;1mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-04-14') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;35;1mStat Load (0.1ms)[0m   [0mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-04-14' AND "stats".term_id = 1) LIMIT 1[0m
+  [4;36;1mStat Create (0.3ms)[0m   [0;1mINSERT INTO "stats" ("created_at", "term_id", "updated_at", "nb_occ", "day") VALUES('2010-01-17 17:48:28', 1, '2010-01-17 17:48:28', NULL, '2009-04-14')[0m
+  [4;35;1mStat Load (0.2ms)[0m   [0mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-04-14' AND "stats".term_id = 1 AND "stats".id <> 14) LIMIT 1[0m
+  [4;36;1mStat Update (0.3ms)[0m   [0;1mUPDATE "stats" SET "updated_at" = '2010-01-17 17:48:28', "nb_occ" = 6 WHERE "id" = 14[0m
+  [4;35;1mStat Load (0.2ms)[0m   [0mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-04-15') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;36;1mStat Load (0.1ms)[0m   [0;1mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-04-15' AND "stats".term_id = 1) LIMIT 1[0m
+  [4;35;1mStat Create (0.3ms)[0m   [0mINSERT INTO "stats" ("created_at", "term_id", "updated_at", "nb_occ", "day") VALUES('2010-01-17 17:48:28', 1, '2010-01-17 17:48:28', NULL, '2009-04-15')[0m
+  [4;36;1mStat Load (0.2ms)[0m   [0;1mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-04-15' AND "stats".term_id = 1 AND "stats".id <> 15) LIMIT 1[0m
+  [4;35;1mStat Update (0.3ms)[0m   [0mUPDATE "stats" SET "updated_at" = '2010-01-17 17:48:29', "nb_occ" = 10 WHERE "id" = 15[0m
+  [4;36;1mStat Load (0.3ms)[0m   [0;1mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-04-16') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;35;1mStat Load (0.1ms)[0m   [0mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-04-16' AND "stats".term_id = 1) LIMIT 1[0m
+  [4;36;1mStat Create (0.3ms)[0m   [0;1mINSERT INTO "stats" ("created_at", "term_id", "updated_at", "nb_occ", "day") VALUES('2010-01-17 17:48:29', 1, '2010-01-17 17:48:29', NULL, '2009-04-16')[0m
+  [4;35;1mStat Load (0.2ms)[0m   [0mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-04-16' AND "stats".term_id = 1 AND "stats".id <> 16) LIMIT 1[0m
+  [4;36;1mStat Update (0.3ms)[0m   [0;1mUPDATE "stats" SET "updated_at" = '2010-01-17 17:48:30', "nb_occ" = 2 WHERE "id" = 16[0m
+  [4;35;1mStat Load (0.2ms)[0m   [0mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-04-17') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;36;1mStat Load (0.1ms)[0m   [0;1mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-04-17' AND "stats".term_id = 1) LIMIT 1[0m
+  [4;35;1mStat Create (0.3ms)[0m   [0mINSERT INTO "stats" ("created_at", "term_id", "updated_at", "nb_occ", "day") VALUES('2010-01-17 17:48:30', 1, '2010-01-17 17:48:30', NULL, '2009-04-17')[0m
+  [4;36;1mStat Load (0.2ms)[0m   [0;1mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-04-17' AND "stats".term_id = 1 AND "stats".id <> 17) LIMIT 1[0m
+  [4;35;1mStat Update (0.3ms)[0m   [0mUPDATE "stats" SET "updated_at" = '2010-01-17 17:48:30', "nb_occ" = 4 WHERE "id" = 17[0m
+  [4;36;1mStat Load (0.3ms)[0m   [0;1mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-04-18') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;35;1mStat Load (0.1ms)[0m   [0mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-04-18' AND "stats".term_id = 1) LIMIT 1[0m
+  [4;36;1mStat Create (0.3ms)[0m   [0;1mINSERT INTO "stats" ("created_at", "term_id", "updated_at", "nb_occ", "day") VALUES('2010-01-17 17:48:30', 1, '2010-01-17 17:48:30', NULL, '2009-04-18')[0m
+  [4;35;1mStat Load (0.2ms)[0m   [0mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-04-18' AND "stats".term_id = 1 AND "stats".id <> 18) LIMIT 1[0m
+  [4;36;1mStat Update (0.3ms)[0m   [0;1mUPDATE "stats" SET "updated_at" = '2010-01-17 17:48:31', "nb_occ" = 4 WHERE "id" = 18[0m
+  [4;35;1mStat Load (0.3ms)[0m   [0mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-04-19') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;36;1mStat Load (0.1ms)[0m   [0;1mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-04-19' AND "stats".term_id = 1) LIMIT 1[0m
+  [4;35;1mStat Create (0.3ms)[0m   [0mINSERT INTO "stats" ("created_at", "term_id", "updated_at", "nb_occ", "day") VALUES('2010-01-17 17:48:31', 1, '2010-01-17 17:48:31', NULL, '2009-04-19')[0m
+  [4;36;1mStat Load (0.2ms)[0m   [0;1mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-04-19' AND "stats".term_id = 1 AND "stats".id <> 19) LIMIT 1[0m
+  [4;35;1mStat Update (0.3ms)[0m   [0mUPDATE "stats" SET "updated_at" = '2010-01-17 17:48:31', "nb_occ" = 5 WHERE "id" = 19[0m
+  [4;36;1mStat Load (0.3ms)[0m   [0;1mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-04-20') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;35;1mStat Load (0.1ms)[0m   [0mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-04-20' AND "stats".term_id = 1) LIMIT 1[0m
+  [4;36;1mStat Create (0.3ms)[0m   [0;1mINSERT INTO "stats" ("created_at", "term_id", "updated_at", "nb_occ", "day") VALUES('2010-01-17 17:48:31', 1, '2010-01-17 17:48:31', NULL, '2009-04-20')[0m
+  [4;35;1mStat Load (0.2ms)[0m   [0mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-04-20' AND "stats".term_id = 1 AND "stats".id <> 20) LIMIT 1[0m
+  [4;36;1mStat Update (0.3ms)[0m   [0;1mUPDATE "stats" SET "updated_at" = '2010-01-17 17:48:31', "nb_occ" = 2 WHERE "id" = 20[0m
+  [4;35;1mStat Load (0.3ms)[0m   [0mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-04-21') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;36;1mStat Load (0.1ms)[0m   [0;1mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-04-21' AND "stats".term_id = 1) LIMIT 1[0m
+  [4;35;1mStat Create (0.3ms)[0m   [0mINSERT INTO "stats" ("created_at", "term_id", "updated_at", "nb_occ", "day") VALUES('2010-01-17 17:48:31', 1, '2010-01-17 17:48:31', NULL, '2009-04-21')[0m
+  [4;36;1mStat Load (0.2ms)[0m   [0;1mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-04-21' AND "stats".term_id = 1 AND "stats".id <> 21) LIMIT 1[0m
+  [4;35;1mStat Update (0.3ms)[0m   [0mUPDATE "stats" SET "updated_at" = '2010-01-17 17:48:32', "nb_occ" = 2 WHERE "id" = 21[0m
+  [4;36;1mStat Load (0.2ms)[0m   [0;1mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-04-22') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;35;1mStat Load (0.1ms)[0m   [0mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-04-22' AND "stats".term_id = 1) LIMIT 1[0m
+  [4;36;1mStat Create (0.3ms)[0m   [0;1mINSERT INTO "stats" ("created_at", "term_id", "updated_at", "nb_occ", "day") VALUES('2010-01-17 17:48:32', 1, '2010-01-17 17:48:32', NULL, '2009-04-22')[0m
+  [4;35;1mStat Load (0.2ms)[0m   [0mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-04-22' AND "stats".term_id = 1 AND "stats".id <> 22) LIMIT 1[0m
+  [4;36;1mStat Update (0.3ms)[0m   [0;1mUPDATE "stats" SET "updated_at" = '2010-01-17 17:48:32', "nb_occ" = 2 WHERE "id" = 22[0m
+  [4;35;1mStat Load (0.3ms)[0m   [0mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-04-23') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;36;1mStat Load (0.1ms)[0m   [0;1mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-04-23' AND "stats".term_id = 1) LIMIT 1[0m
+  [4;35;1mStat Create (0.3ms)[0m   [0mINSERT INTO "stats" ("created_at", "term_id", "updated_at", "nb_occ", "day") VALUES('2010-01-17 17:48:32', 1, '2010-01-17 17:48:32', NULL, '2009-04-23')[0m
+  [4;36;1mStat Load (0.2ms)[0m   [0;1mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-04-23' AND "stats".term_id = 1 AND "stats".id <> 23) LIMIT 1[0m
+  [4;35;1mStat Update (0.3ms)[0m   [0mUPDATE "stats" SET "updated_at" = '2010-01-17 17:48:33', "nb_occ" = 1 WHERE "id" = 23[0m
+  [4;36;1mStat Load (0.2ms)[0m   [0;1mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-04-24') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;35;1mStat Load (0.1ms)[0m   [0mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-04-24' AND "stats".term_id = 1) LIMIT 1[0m
+  [4;36;1mStat Create (0.3ms)[0m   [0;1mINSERT INTO "stats" ("created_at", "term_id", "updated_at", "nb_occ", "day") VALUES('2010-01-17 17:48:33', 1, '2010-01-17 17:48:33', NULL, '2009-04-24')[0m
+  [4;35;1mStat Load (0.2ms)[0m   [0mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-04-24' AND "stats".term_id = 1 AND "stats".id <> 24) LIMIT 1[0m
+  [4;36;1mStat Update (0.3ms)[0m   [0;1mUPDATE "stats" SET "updated_at" = '2010-01-17 17:48:33', "nb_occ" = 3 WHERE "id" = 24[0m
+  [4;35;1mStat Load (0.2ms)[0m   [0mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-04-25') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;36;1mStat Load (0.1ms)[0m   [0;1mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-04-25' AND "stats".term_id = 1) LIMIT 1[0m
+  [4;35;1mStat Create (0.3ms)[0m   [0mINSERT INTO "stats" ("created_at", "term_id", "updated_at", "nb_occ", "day") VALUES('2010-01-17 17:48:33', 1, '2010-01-17 17:48:33', NULL, '2009-04-25')[0m
+  [4;36;1mStat Load (0.2ms)[0m   [0;1mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-04-25' AND "stats".term_id = 1 AND "stats".id <> 25) LIMIT 1[0m
+  [4;35;1mStat Update (0.3ms)[0m   [0mUPDATE "stats" SET "updated_at" = '2010-01-17 17:48:33', "nb_occ" = 1 WHERE "id" = 25[0m
+  [4;36;1mStat Load (0.3ms)[0m   [0;1mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-04-26') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;35;1mStat Load (0.2ms)[0m   [0mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-04-26' AND "stats".term_id = 1) LIMIT 1[0m
+  [4;36;1mStat Create (0.3ms)[0m   [0;1mINSERT INTO "stats" ("created_at", "term_id", "updated_at", "nb_occ", "day") VALUES('2010-01-17 17:48:33', 1, '2010-01-17 17:48:33', NULL, '2009-04-26')[0m
+  [4;35;1mStat Load (0.2ms)[0m   [0mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-04-26' AND "stats".term_id = 1 AND "stats".id <> 26) LIMIT 1[0m
+  [4;36;1mStat Update (0.3ms)[0m   [0;1mUPDATE "stats" SET "updated_at" = '2010-01-17 17:48:34', "nb_occ" = 7 WHERE "id" = 26[0m
+  [4;35;1mStat Load (0.3ms)[0m   [0mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-04-27') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;36;1mStat Load (0.1ms)[0m   [0;1mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-04-27' AND "stats".term_id = 1) LIMIT 1[0m
+  [4;35;1mStat Create (0.3ms)[0m   [0mINSERT INTO "stats" ("created_at", "term_id", "updated_at", "nb_occ", "day") VALUES('2010-01-17 17:48:34', 1, '2010-01-17 17:48:34', NULL, '2009-04-27')[0m
+  [4;36;1mStat Load (0.2ms)[0m   [0;1mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-04-27' AND "stats".term_id = 1 AND "stats".id <> 27) LIMIT 1[0m
+  [4;35;1mStat Update (0.3ms)[0m   [0mUPDATE "stats" SET "updated_at" = '2010-01-17 17:48:34', "nb_occ" = 6 WHERE "id" = 27[0m
+  [4;36;1mStat Load (0.3ms)[0m   [0;1mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-04-28') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;35;1mStat Load (0.1ms)[0m   [0mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-04-28' AND "stats".term_id = 1) LIMIT 1[0m
+  [4;36;1mStat Create (0.3ms)[0m   [0;1mINSERT INTO "stats" ("created_at", "term_id", "updated_at", "nb_occ", "day") VALUES('2010-01-17 17:48:34', 1, '2010-01-17 17:48:34', NULL, '2009-04-28')[0m
+  [4;35;1mStat Load (0.2ms)[0m   [0mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-04-28' AND "stats".term_id = 1 AND "stats".id <> 28) LIMIT 1[0m
+  [4;36;1mStat Update (0.3ms)[0m   [0;1mUPDATE "stats" SET "updated_at" = '2010-01-17 17:48:35', "nb_occ" = 3 WHERE "id" = 28[0m
+  [4;35;1mStat Load (0.3ms)[0m   [0mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-04-29') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;36;1mStat Load (0.1ms)[0m   [0;1mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-04-29' AND "stats".term_id = 1) LIMIT 1[0m
+  [4;35;1mStat Create (0.3ms)[0m   [0mINSERT INTO "stats" ("created_at", "term_id", "updated_at", "nb_occ", "day") VALUES('2010-01-17 17:48:35', 1, '2010-01-17 17:48:35', NULL, '2009-04-29')[0m
+  [4;36;1mStat Load (0.2ms)[0m   [0;1mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-04-29' AND "stats".term_id = 1 AND "stats".id <> 29) LIMIT 1[0m
+  [4;35;1mStat Update (0.3ms)[0m   [0mUPDATE "stats" SET "updated_at" = '2010-01-17 17:48:36', "nb_occ" = 4 WHERE "id" = 29[0m
+  [4;36;1mStat Load (0.3ms)[0m   [0;1mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-04-30') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;35;1mStat Load (0.1ms)[0m   [0mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-04-30' AND "stats".term_id = 1) LIMIT 1[0m
+  [4;36;1mStat Create (0.3ms)[0m   [0;1mINSERT INTO "stats" ("created_at", "term_id", "updated_at", "nb_occ", "day") VALUES('2010-01-17 17:48:36', 1, '2010-01-17 17:48:36', NULL, '2009-04-30')[0m
+  [4;35;1mStat Load (0.2ms)[0m   [0mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-04-30' AND "stats".term_id = 1 AND "stats".id <> 30) LIMIT 1[0m
+  [4;36;1mStat Update (0.3ms)[0m   [0;1mUPDATE "stats" SET "updated_at" = '2010-01-17 17:48:36', "nb_occ" = 111 WHERE "id" = 30[0m
+  [4;36;1mTerm Load (0.9ms)[0m   [0;1mSELECT * FROM "terms" ORDER BY RANDOM() LIMIT 1[0m
+  [4;35;1mStat Load (0.3ms)[0m   [0mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-04-01') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;36;1mStat Load (0.3ms)[0m   [0;1mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-04-02') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;35;1mStat Load (0.3ms)[0m   [0mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-04-03') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;36;1mStat Load (0.3ms)[0m   [0;1mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-04-04') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;35;1mStat Load (0.3ms)[0m   [0mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-04-05') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;36;1mStat Load (0.3ms)[0m   [0;1mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-04-06') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;35;1mStat Load (0.3ms)[0m   [0mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-04-07') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;36;1mStat Load (0.4ms)[0m   [0;1mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-04-08') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;35;1mStat Load (0.3ms)[0m   [0mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-04-09') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;36;1mStat Load (0.3ms)[0m   [0;1mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-04-10') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;35;1mStat Load (0.3ms)[0m   [0mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-04-11') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;36;1mStat Load (0.3ms)[0m   [0;1mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-04-12') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;35;1mStat Load (0.3ms)[0m   [0mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-04-13') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;36;1mStat Load (0.3ms)[0m   [0;1mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-04-14') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;35;1mStat Load (0.3ms)[0m   [0mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-04-15') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;36;1mStat Load (0.3ms)[0m   [0;1mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-04-16') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;35;1mStat Load (0.3ms)[0m   [0mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-04-17') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;36;1mStat Load (0.3ms)[0m   [0;1mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-04-18') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;35;1mStat Load (0.3ms)[0m   [0mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-04-19') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;36;1mStat Load (0.3ms)[0m   [0;1mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-04-20') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;35;1mStat Load (0.3ms)[0m   [0mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-04-21') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;36;1mStat Load (0.3ms)[0m   [0;1mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-04-22') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;35;1mStat Load (0.3ms)[0m   [0mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-04-23') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;36;1mStat Load (0.3ms)[0m   [0;1mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-04-24') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;35;1mStat Load (0.3ms)[0m   [0mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-04-25') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;36;1mStat Load (0.3ms)[0m   [0;1mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-04-26') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;35;1mStat Load (0.3ms)[0m   [0mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-04-27') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;36;1mStat Load (0.3ms)[0m   [0;1mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-04-28') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;35;1mStat Load (0.3ms)[0m   [0mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-04-29') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;36;1mStat Load (0.3ms)[0m   [0;1mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-04-30') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;36;1mTerm Load (0.9ms)[0m   [0;1mSELECT * FROM "terms" ORDER BY RANDOM() LIMIT 1[0m
+  [4;35;1mStat Load (0.3ms)[0m   [0mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-04-01') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;36;1mStat Load (0.3ms)[0m   [0;1mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-04-02') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;35;1mStat Load (0.3ms)[0m   [0mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-04-03') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;36;1mStat Load (0.3ms)[0m   [0;1mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-04-04') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;35;1mStat Load (0.3ms)[0m   [0mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-04-05') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;36;1mStat Load (0.3ms)[0m   [0;1mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-04-06') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;35;1mStat Load (0.3ms)[0m   [0mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-04-07') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;36;1mStat Load (0.4ms)[0m   [0;1mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-04-08') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;35;1mStat Load (0.3ms)[0m   [0mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-04-09') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;36;1mStat Load (0.3ms)[0m   [0;1mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-04-10') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;35;1mStat Load (0.3ms)[0m   [0mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-04-11') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;36;1mStat Load (0.3ms)[0m   [0;1mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-04-12') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;35;1mStat Load (0.3ms)[0m   [0mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-04-13') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;36;1mStat Load (0.3ms)[0m   [0;1mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-04-14') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;35;1mStat Load (0.3ms)[0m   [0mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-04-15') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;36;1mStat Load (0.3ms)[0m   [0;1mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-04-16') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;35;1mStat Load (0.3ms)[0m   [0mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-04-17') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;36;1mStat Load (0.3ms)[0m   [0;1mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-04-18') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;35;1mStat Load (0.3ms)[0m   [0mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-04-19') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;36;1mStat Load (0.3ms)[0m   [0;1mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-04-20') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;35;1mStat Load (0.3ms)[0m   [0mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-04-21') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;36;1mStat Load (0.3ms)[0m   [0;1mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-04-22') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;35;1mStat Load (0.3ms)[0m   [0mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-04-23') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;36;1mStat Load (0.3ms)[0m   [0;1mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-04-24') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;35;1mStat Load (0.3ms)[0m   [0mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-04-25') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;36;1mStat Load (0.3ms)[0m   [0;1mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-04-26') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;35;1mStat Load (0.3ms)[0m   [0mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-04-27') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;36;1mStat Load (0.3ms)[0m   [0;1mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-04-28') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;35;1mStat Load (0.3ms)[0m   [0mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-04-29') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;36;1mStat Load (0.3ms)[0m   [0;1mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-04-30') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;35;1mStat Load (0.2ms)[0m   [0mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-05-01') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;36;1mStat Load (0.1ms)[0m   [0;1mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-05-01' AND "stats".term_id = 1) LIMIT 1[0m
+  [4;35;1mStat Create (0.4ms)[0m   [0mINSERT INTO "stats" ("created_at", "term_id", "updated_at", "nb_occ", "day") VALUES('2010-01-17 17:51:02', 1, '2010-01-17 17:51:02', NULL, '2009-05-01')[0m
+  [4;36;1mStat Load (0.2ms)[0m   [0;1mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-05-01' AND "stats".term_id = 1 AND "stats".id <> 31) LIMIT 1[0m
+  [4;35;1mStat Update (0.3ms)[0m   [0mUPDATE "stats" SET "updated_at" = '2010-01-17 17:51:03', "nb_occ" = 4 WHERE "id" = 31[0m
+  [4;36;1mStat Load (0.3ms)[0m   [0;1mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-05-02') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;35;1mStat Load (0.2ms)[0m   [0mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-05-02' AND "stats".term_id = 1) LIMIT 1[0m
+  [4;36;1mStat Create (0.3ms)[0m   [0;1mINSERT INTO "stats" ("created_at", "term_id", "updated_at", "nb_occ", "day") VALUES('2010-01-17 17:51:03', 1, '2010-01-17 17:51:03', NULL, '2009-05-02')[0m
+  [4;35;1mStat Load (0.2ms)[0m   [0mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-05-02' AND "stats".term_id = 1 AND "stats".id <> 32) LIMIT 1[0m
+  [4;36;1mStat Update (0.3ms)[0m   [0;1mUPDATE "stats" SET "updated_at" = '2010-01-17 17:51:03', "nb_occ" = 5 WHERE "id" = 32[0m
+  [4;35;1mStat Load (0.3ms)[0m   [0mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-05-03') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;36;1mStat Load (0.1ms)[0m   [0;1mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-05-03' AND "stats".term_id = 1) LIMIT 1[0m
+  [4;35;1mStat Create (0.3ms)[0m   [0mINSERT INTO "stats" ("created_at", "term_id", "updated_at", "nb_occ", "day") VALUES('2010-01-17 17:51:03', 1, '2010-01-17 17:51:03', NULL, '2009-05-03')[0m
+  [4;36;1mStat Load (0.2ms)[0m   [0;1mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-05-03' AND "stats".term_id = 1 AND "stats".id <> 33) LIMIT 1[0m
+  [4;35;1mStat Update (0.3ms)[0m   [0mUPDATE "stats" SET "updated_at" = '2010-01-17 17:51:03', "nb_occ" = 1 WHERE "id" = 33[0m
+  [4;36;1mStat Load (0.3ms)[0m   [0;1mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-05-04') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;35;1mStat Load (0.1ms)[0m   [0mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-05-04' AND "stats".term_id = 1) LIMIT 1[0m
+  [4;36;1mStat Create (0.3ms)[0m   [0;1mINSERT INTO "stats" ("created_at", "term_id", "updated_at", "nb_occ", "day") VALUES('2010-01-17 17:51:03', 1, '2010-01-17 17:51:03', NULL, '2009-05-04')[0m
+  [4;35;1mStat Load (0.2ms)[0m   [0mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-05-04' AND "stats".term_id = 1 AND "stats".id <> 34) LIMIT 1[0m
+  [4;36;1mStat Update (0.4ms)[0m   [0;1mUPDATE "stats" SET "updated_at" = '2010-01-17 17:51:04', "nb_occ" = 1 WHERE "id" = 34[0m
+  [4;35;1mStat Load (0.2ms)[0m   [0mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-05-05') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;36;1mStat Load (0.2ms)[0m   [0;1mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-05-05' AND "stats".term_id = 1) LIMIT 1[0m
+  [4;35;1mStat Create (0.3ms)[0m   [0mINSERT INTO "stats" ("created_at", "term_id", "updated_at", "nb_occ", "day") VALUES('2010-01-17 17:51:04', 1, '2010-01-17 17:51:04', NULL, '2009-05-05')[0m
+  [4;36;1mStat Load (0.2ms)[0m   [0;1mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-05-05' AND "stats".term_id = 1 AND "stats".id <> 35) LIMIT 1[0m
+  [4;35;1mStat Update (0.3ms)[0m   [0mUPDATE "stats" SET "updated_at" = '2010-01-17 17:51:04', "nb_occ" = 6 WHERE "id" = 35[0m
+  [4;36;1mStat Load (0.3ms)[0m   [0;1mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-05-06') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;35;1mStat Load (0.1ms)[0m   [0mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-05-06' AND "stats".term_id = 1) LIMIT 1[0m
+  [4;36;1mStat Create (0.3ms)[0m   [0;1mINSERT INTO "stats" ("created_at", "term_id", "updated_at", "nb_occ", "day") VALUES('2010-01-17 17:51:04', 1, '2010-01-17 17:51:04', NULL, '2009-05-06')[0m
+  [4;35;1mStat Load (0.2ms)[0m   [0mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-05-06' AND "stats".term_id = 1 AND "stats".id <> 36) LIMIT 1[0m
+  [4;36;1mStat Update (0.3ms)[0m   [0;1mUPDATE "stats" SET "updated_at" = '2010-01-17 17:51:04', "nb_occ" = 5 WHERE "id" = 36[0m
+  [4;35;1mStat Load (0.2ms)[0m   [0mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-05-07') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;36;1mStat Load (0.2ms)[0m   [0;1mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-05-07' AND "stats".term_id = 1) LIMIT 1[0m
+  [4;35;1mStat Create (0.3ms)[0m   [0mINSERT INTO "stats" ("created_at", "term_id", "updated_at", "nb_occ", "day") VALUES('2010-01-17 17:51:04', 1, '2010-01-17 17:51:04', NULL, '2009-05-07')[0m
+  [4;36;1mStat Load (0.2ms)[0m   [0;1mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-05-07' AND "stats".term_id = 1 AND "stats".id <> 37) LIMIT 1[0m
+  [4;35;1mStat Update (0.3ms)[0m   [0mUPDATE "stats" SET "updated_at" = '2010-01-17 17:51:05', "nb_occ" = 5 WHERE "id" = 37[0m
+  [4;36;1mStat Load (0.3ms)[0m   [0;1mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-05-08') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;35;1mStat Load (0.2ms)[0m   [0mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-05-08' AND "stats".term_id = 1) LIMIT 1[0m
+  [4;36;1mStat Create (0.3ms)[0m   [0;1mINSERT INTO "stats" ("created_at", "term_id", "updated_at", "nb_occ", "day") VALUES('2010-01-17 17:51:05', 1, '2010-01-17 17:51:05', NULL, '2009-05-08')[0m
+  [4;35;1mStat Load (0.2ms)[0m   [0mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-05-08' AND "stats".term_id = 1 AND "stats".id <> 38) LIMIT 1[0m
+  [4;36;1mStat Update (0.3ms)[0m   [0;1mUPDATE "stats" SET "updated_at" = '2010-01-17 17:51:05', "nb_occ" = 3 WHERE "id" = 38[0m
+  [4;35;1mStat Load (0.3ms)[0m   [0mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-05-09') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;36;1mStat Load (0.2ms)[0m   [0;1mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-05-09' AND "stats".term_id = 1) LIMIT 1[0m
+  [4;35;1mStat Create (0.3ms)[0m   [0mINSERT INTO "stats" ("created_at", "term_id", "updated_at", "nb_occ", "day") VALUES('2010-01-17 17:51:05', 1, '2010-01-17 17:51:05', NULL, '2009-05-09')[0m
+  [4;36;1mStat Load (0.2ms)[0m   [0;1mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-05-09' AND "stats".term_id = 1 AND "stats".id <> 39) LIMIT 1[0m
+  [4;35;1mStat Update (0.3ms)[0m   [0mUPDATE "stats" SET "updated_at" = '2010-01-17 17:51:06', "nb_occ" = 3 WHERE "id" = 39[0m
+  [4;36;1mStat Load (0.3ms)[0m   [0;1mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-05-10') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;35;1mStat Load (0.1ms)[0m   [0mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-05-10' AND "stats".term_id = 1) LIMIT 1[0m
+  [4;36;1mStat Create (0.3ms)[0m   [0;1mINSERT INTO "stats" ("created_at", "term_id", "updated_at", "nb_occ", "day") VALUES('2010-01-17 17:51:06', 1, '2010-01-17 17:51:06', NULL, '2009-05-10')[0m
+  [4;35;1mStat Load (0.2ms)[0m   [0mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-05-10' AND "stats".term_id = 1 AND "stats".id <> 40) LIMIT 1[0m
+  [4;36;1mStat Update (0.3ms)[0m   [0;1mUPDATE "stats" SET "updated_at" = '2010-01-17 17:51:06', "nb_occ" = 4 WHERE "id" = 40[0m
+  [4;35;1mStat Load (0.3ms)[0m   [0mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-05-11') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;36;1mStat Load (0.1ms)[0m   [0;1mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-05-11' AND "stats".term_id = 1) LIMIT 1[0m
+  [4;35;1mStat Create (0.3ms)[0m   [0mINSERT INTO "stats" ("created_at", "term_id", "updated_at", "nb_occ", "day") VALUES('2010-01-17 17:51:06', 1, '2010-01-17 17:51:06', NULL, '2009-05-11')[0m
+  [4;36;1mStat Load (0.2ms)[0m   [0;1mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-05-11' AND "stats".term_id = 1 AND "stats".id <> 41) LIMIT 1[0m
+  [4;35;1mStat Update (0.3ms)[0m   [0mUPDATE "stats" SET "updated_at" = '2010-01-17 17:51:07', "nb_occ" = 10 WHERE "id" = 41[0m
+  [4;36;1mStat Load (0.3ms)[0m   [0;1mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-05-12') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;35;1mStat Load (0.2ms)[0m   [0mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-05-12' AND "stats".term_id = 1) LIMIT 1[0m
+  [4;36;1mStat Create (0.3ms)[0m   [0;1mINSERT INTO "stats" ("created_at", "term_id", "updated_at", "nb_occ", "day") VALUES('2010-01-17 17:51:07', 1, '2010-01-17 17:51:07', NULL, '2009-05-12')[0m
+  [4;35;1mStat Load (0.2ms)[0m   [0mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-05-12' AND "stats".term_id = 1 AND "stats".id <> 42) LIMIT 1[0m
+  [4;36;1mStat Update (0.3ms)[0m   [0;1mUPDATE "stats" SET "updated_at" = '2010-01-17 17:51:07', "nb_occ" = 2 WHERE "id" = 42[0m
+  [4;35;1mStat Load (0.2ms)[0m   [0mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-05-13') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;36;1mStat Load (0.2ms)[0m   [0;1mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-05-13' AND "stats".term_id = 1) LIMIT 1[0m
+  [4;35;1mStat Create (0.3ms)[0m   [0mINSERT INTO "stats" ("created_at", "term_id", "updated_at", "nb_occ", "day") VALUES('2010-01-17 17:51:07', 1, '2010-01-17 17:51:07', NULL, '2009-05-13')[0m
+  [4;36;1mStat Load (0.2ms)[0m   [0;1mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-05-13' AND "stats".term_id = 1 AND "stats".id <> 43) LIMIT 1[0m
+  [4;35;1mStat Update (0.3ms)[0m   [0mUPDATE "stats" SET "updated_at" = '2010-01-17 17:51:07', "nb_occ" = 1 WHERE "id" = 43[0m
+  [4;36;1mStat Load (0.2ms)[0m   [0;1mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-05-14') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;35;1mStat Load (0.1ms)[0m   [0mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-05-14' AND "stats".term_id = 1) LIMIT 1[0m
+  [4;36;1mStat Create (0.3ms)[0m   [0;1mINSERT INTO "stats" ("created_at", "term_id", "updated_at", "nb_occ", "day") VALUES('2010-01-17 17:51:07', 1, '2010-01-17 17:51:07', NULL, '2009-05-14')[0m
+  [4;35;1mStat Load (0.2ms)[0m   [0mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-05-14' AND "stats".term_id = 1 AND "stats".id <> 44) LIMIT 1[0m
+  [4;36;1mStat Update (0.3ms)[0m   [0;1mUPDATE "stats" SET "updated_at" = '2010-01-17 17:51:09', "nb_occ" = 6 WHERE "id" = 44[0m
+  [4;35;1mStat Load (0.3ms)[0m   [0mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-05-15') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;36;1mStat Load (0.2ms)[0m   [0;1mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-05-15' AND "stats".term_id = 1) LIMIT 1[0m
+  [4;35;1mStat Create (0.3ms)[0m   [0mINSERT INTO "stats" ("created_at", "term_id", "updated_at", "nb_occ", "day") VALUES('2010-01-17 17:51:09', 1, '2010-01-17 17:51:09', NULL, '2009-05-15')[0m
+  [4;36;1mStat Load (0.2ms)[0m   [0;1mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-05-15' AND "stats".term_id = 1 AND "stats".id <> 45) LIMIT 1[0m
+  [4;35;1mStat Update (0.3ms)[0m   [0mUPDATE "stats" SET "updated_at" = '2010-01-17 17:51:09', "nb_occ" = 10 WHERE "id" = 45[0m
+  [4;36;1mStat Load (0.3ms)[0m   [0;1mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-05-16') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;35;1mStat Load (0.2ms)[0m   [0mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-05-16' AND "stats".term_id = 1) LIMIT 1[0m
+  [4;36;1mStat Create (0.3ms)[0m   [0;1mINSERT INTO "stats" ("created_at", "term_id", "updated_at", "nb_occ", "day") VALUES('2010-01-17 17:51:09', 1, '2010-01-17 17:51:09', NULL, '2009-05-16')[0m
+  [4;35;1mStat Load (0.2ms)[0m   [0mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-05-16' AND "stats".term_id = 1 AND "stats".id <> 46) LIMIT 1[0m
+  [4;36;1mStat Update (0.3ms)[0m   [0;1mUPDATE "stats" SET "updated_at" = '2010-01-17 17:51:10', "nb_occ" = 1 WHERE "id" = 46[0m
+  [4;35;1mStat Load (0.2ms)[0m   [0mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-05-17') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;36;1mStat Load (0.2ms)[0m   [0;1mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-05-17' AND "stats".term_id = 1) LIMIT 1[0m
+  [4;35;1mStat Create (0.3ms)[0m   [0mINSERT INTO "stats" ("created_at", "term_id", "updated_at", "nb_occ", "day") VALUES('2010-01-17 17:51:10', 1, '2010-01-17 17:51:10', NULL, '2009-05-17')[0m
+  [4;36;1mStat Load (0.2ms)[0m   [0;1mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-05-17' AND "stats".term_id = 1 AND "stats".id <> 47) LIMIT 1[0m
+  [4;35;1mStat Update (0.3ms)[0m   [0mUPDATE "stats" SET "updated_at" = '2010-01-17 17:51:10', "nb_occ" = 4 WHERE "id" = 47[0m
+  [4;36;1mStat Load (0.3ms)[0m   [0;1mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-05-18') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;35;1mStat Load (0.2ms)[0m   [0mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-05-18' AND "stats".term_id = 1) LIMIT 1[0m
+  [4;36;1mStat Create (0.3ms)[0m   [0;1mINSERT INTO "stats" ("created_at", "term_id", "updated_at", "nb_occ", "day") VALUES('2010-01-17 17:51:10', 1, '2010-01-17 17:51:10', NULL, '2009-05-18')[0m
+  [4;35;1mStat Load (0.2ms)[0m   [0mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-05-18' AND "stats".term_id = 1 AND "stats".id <> 48) LIMIT 1[0m
+  [4;36;1mStat Update (0.3ms)[0m   [0;1mUPDATE "stats" SET "updated_at" = '2010-01-17 17:51:10', "nb_occ" = 1 WHERE "id" = 48[0m
+  [4;35;1mStat Load (0.3ms)[0m   [0mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-05-19') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;36;1mStat Load (0.2ms)[0m   [0;1mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-05-19' AND "stats".term_id = 1) LIMIT 1[0m
+  [4;35;1mStat Create (0.3ms)[0m   [0mINSERT INTO "stats" ("created_at", "term_id", "updated_at", "nb_occ", "day") VALUES('2010-01-17 17:51:10', 1, '2010-01-17 17:51:10', NULL, '2009-05-19')[0m
+  [4;36;1mStat Load (0.2ms)[0m   [0;1mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-05-19' AND "stats".term_id = 1 AND "stats".id <> 49) LIMIT 1[0m
+  [4;35;1mStat Update (0.3ms)[0m   [0mUPDATE "stats" SET "updated_at" = '2010-01-17 17:51:11', "nb_occ" = 2 WHERE "id" = 49[0m
+  [4;36;1mStat Load (0.3ms)[0m   [0;1mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-05-20') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;35;1mStat Load (0.2ms)[0m   [0mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-05-20' AND "stats".term_id = 1) LIMIT 1[0m
+  [4;36;1mStat Create (0.3ms)[0m   [0;1mINSERT INTO "stats" ("created_at", "term_id", "updated_at", "nb_occ", "day") VALUES('2010-01-17 17:51:11', 1, '2010-01-17 17:51:11', NULL, '2009-05-20')[0m
+  [4;35;1mStat Load (0.2ms)[0m   [0mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-05-20' AND "stats".term_id = 1 AND "stats".id <> 50) LIMIT 1[0m
+  [4;36;1mStat Update (0.4ms)[0m   [0;1mUPDATE "stats" SET "updated_at" = '2010-01-17 17:51:11', "nb_occ" = 2 WHERE "id" = 50[0m
+  [4;35;1mStat Load (0.3ms)[0m   [0mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-05-21') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;36;1mStat Load (0.2ms)[0m   [0;1mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-05-21' AND "stats".term_id = 1) LIMIT 1[0m
+  [4;35;1mStat Create (0.3ms)[0m   [0mINSERT INTO "stats" ("created_at", "term_id", "updated_at", "nb_occ", "day") VALUES('2010-01-17 17:51:11', 1, '2010-01-17 17:51:11', NULL, '2009-05-21')[0m
+  [4;36;1mStat Load (0.2ms)[0m   [0;1mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-05-21' AND "stats".term_id = 1 AND "stats".id <> 51) LIMIT 1[0m
+  [4;35;1mStat Update (0.3ms)[0m   [0mUPDATE "stats" SET "updated_at" = '2010-01-17 17:51:12', "nb_occ" = 6 WHERE "id" = 51[0m
+  [4;36;1mStat Load (0.3ms)[0m   [0;1mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-05-22') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;35;1mStat Load (0.2ms)[0m   [0mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-05-22' AND "stats".term_id = 1) LIMIT 1[0m
+  [4;36;1mStat Create (0.3ms)[0m   [0;1mINSERT INTO "stats" ("created_at", "term_id", "updated_at", "nb_occ", "day") VALUES('2010-01-17 17:51:12', 1, '2010-01-17 17:51:12', NULL, '2009-05-22')[0m
+  [4;35;1mStat Load (0.2ms)[0m   [0mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-05-22' AND "stats".term_id = 1 AND "stats".id <> 52) LIMIT 1[0m
+  [4;36;1mStat Update (0.3ms)[0m   [0;1mUPDATE "stats" SET "updated_at" = '2010-01-17 17:51:12', "nb_occ" = 1 WHERE "id" = 52[0m
+  [4;35;1mStat Load (0.3ms)[0m   [0mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-05-23') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;36;1mStat Load (0.2ms)[0m   [0;1mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-05-23' AND "stats".term_id = 1) LIMIT 1[0m
+  [4;35;1mStat Create (0.3ms)[0m   [0mINSERT INTO "stats" ("created_at", "term_id", "updated_at", "nb_occ", "day") VALUES('2010-01-17 17:51:12', 1, '2010-01-17 17:51:12', NULL, '2009-05-23')[0m
+  [4;36;1mStat Load (0.2ms)[0m   [0;1mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-05-23' AND "stats".term_id = 1 AND "stats".id <> 53) LIMIT 1[0m
+  [4;35;1mStat Update (0.3ms)[0m   [0mUPDATE "stats" SET "updated_at" = '2010-01-17 17:51:13', "nb_occ" = 10 WHERE "id" = 53[0m
+  [4;36;1mStat Load (0.3ms)[0m   [0;1mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-05-24') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;35;1mStat Load (0.2ms)[0m   [0mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-05-24' AND "stats".term_id = 1) LIMIT 1[0m
+  [4;36;1mStat Create (0.3ms)[0m   [0;1mINSERT INTO "stats" ("created_at", "term_id", "updated_at", "nb_occ", "day") VALUES('2010-01-17 17:51:13', 1, '2010-01-17 17:51:13', NULL, '2009-05-24')[0m
+  [4;35;1mStat Load (0.2ms)[0m   [0mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-05-24' AND "stats".term_id = 1 AND "stats".id <> 54) LIMIT 1[0m
+  [4;36;1mStat Update (0.3ms)[0m   [0;1mUPDATE "stats" SET "updated_at" = '2010-01-17 17:51:13', "nb_occ" = 3 WHERE "id" = 54[0m
+  [4;35;1mStat Load (0.3ms)[0m   [0mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-05-25') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;36;1mStat Load (0.2ms)[0m   [0;1mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-05-25' AND "stats".term_id = 1) LIMIT 1[0m
+  [4;35;1mStat Create (0.3ms)[0m   [0mINSERT INTO "stats" ("created_at", "term_id", "updated_at", "nb_occ", "day") VALUES('2010-01-17 17:51:13', 1, '2010-01-17 17:51:13', NULL, '2009-05-25')[0m
+  [4;36;1mStat Load (0.2ms)[0m   [0;1mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-05-25' AND "stats".term_id = 1 AND "stats".id <> 55) LIMIT 1[0m
+  [4;35;1mStat Update (0.3ms)[0m   [0mUPDATE "stats" SET "updated_at" = '2010-01-17 17:51:14', "nb_occ" = 4 WHERE "id" = 55[0m
+  [4;36;1mStat Load (0.3ms)[0m   [0;1mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-05-26') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;35;1mStat Load (0.2ms)[0m   [0mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-05-26' AND "stats".term_id = 1) LIMIT 1[0m
+  [4;36;1mStat Create (0.3ms)[0m   [0;1mINSERT INTO "stats" ("created_at", "term_id", "updated_at", "nb_occ", "day") VALUES('2010-01-17 17:51:14', 1, '2010-01-17 17:51:14', NULL, '2009-05-26')[0m
+  [4;35;1mStat Load (0.2ms)[0m   [0mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-05-26' AND "stats".term_id = 1 AND "stats".id <> 56) LIMIT 1[0m
+  [4;36;1mStat Update (0.3ms)[0m   [0;1mUPDATE "stats" SET "updated_at" = '2010-01-17 17:51:14', "nb_occ" = 2 WHERE "id" = 56[0m
+  [4;35;1mStat Load (0.3ms)[0m   [0mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-05-27') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;36;1mStat Load (0.2ms)[0m   [0;1mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-05-27' AND "stats".term_id = 1) LIMIT 1[0m
+  [4;35;1mStat Create (0.3ms)[0m   [0mINSERT INTO "stats" ("created_at", "term_id", "updated_at", "nb_occ", "day") VALUES('2010-01-17 17:51:14', 1, '2010-01-17 17:51:14', NULL, '2009-05-27')[0m
+  [4;36;1mStat Load (0.2ms)[0m   [0;1mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-05-27' AND "stats".term_id = 1 AND "stats".id <> 57) LIMIT 1[0m
+  [4;35;1mStat Update (0.3ms)[0m   [0mUPDATE "stats" SET "updated_at" = '2010-01-17 17:51:14', "nb_occ" = 1 WHERE "id" = 57[0m
+  [4;36;1mStat Load (0.2ms)[0m   [0;1mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-05-28') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;35;1mStat Load (0.2ms)[0m   [0mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-05-28' AND "stats".term_id = 1) LIMIT 1[0m
+  [4;36;1mStat Create (0.3ms)[0m   [0;1mINSERT INTO "stats" ("created_at", "term_id", "updated_at", "nb_occ", "day") VALUES('2010-01-17 17:51:14', 1, '2010-01-17 17:51:14', NULL, '2009-05-28')[0m
+  [4;35;1mStat Load (0.2ms)[0m   [0mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-05-28' AND "stats".term_id = 1 AND "stats".id <> 58) LIMIT 1[0m
+  [4;36;1mStat Update (0.3ms)[0m   [0;1mUPDATE "stats" SET "updated_at" = '2010-01-17 17:51:15', "nb_occ" = 3 WHERE "id" = 58[0m
+  [4;35;1mStat Load (0.3ms)[0m   [0mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-05-29') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;36;1mStat Load (0.2ms)[0m   [0;1mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-05-29' AND "stats".term_id = 1) LIMIT 1[0m
+  [4;35;1mStat Create (0.3ms)[0m   [0mINSERT INTO "stats" ("created_at", "term_id", "updated_at", "nb_occ", "day") VALUES('2010-01-17 17:51:15', 1, '2010-01-17 17:51:15', NULL, '2009-05-29')[0m
+  [4;36;1mStat Load (0.2ms)[0m   [0;1mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-05-29' AND "stats".term_id = 1 AND "stats".id <> 59) LIMIT 1[0m
+  [4;35;1mStat Update (0.3ms)[0m   [0mUPDATE "stats" SET "updated_at" = '2010-01-17 17:51:15', "nb_occ" = 1 WHERE "id" = 59[0m
+  [4;36;1mStat Load (0.3ms)[0m   [0;1mSELECT * FROM "stats" WHERE ("stats"."day" = '2009-05-30') AND ("stats".term_id = 1) LIMIT 1[0m
+  [4;35;1mStat Load (0.2ms)[0m   [0mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-05-30' AND "stats".term_id = 1) LIMIT 1[0m
+  [4;36;1mStat Create (0.3ms)[0m   [0;1mINSERT INTO "stats" ("created_at", "term_id", "updated_at", "nb_occ", "day") VALUES('2010-01-17 17:51:15', 1, '2010-01-17 17:51:15', NULL, '2009-05-30')[0m
+  [4;35;1mStat Load (0.2ms)[0m   [0mSELECT "stats".id FROM "stats" WHERE ("stats"."day" = '2009-05-30' AND "stats".term_id = 1 AND "stats".id <> 60) LIMIT 1[0m
+  [4;36;1mStat Update (0.3ms)[0m   [0;1mUPDATE "stats" SET "updated_at" = '2010-01-17 17:51:16', "nb_occ" = 1 WHERE "id" = 60[0m
